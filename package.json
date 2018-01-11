@@ -1,0 +1,33 @@
+{
+    "name": "react-component-boilerplate",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-scripts": "1.0.17"
+    },
+    "scripts": {
+        "start": "concurrently --kill-others \"npm run watch-css\" \"npm run watch-react\"",
+        "build": "npm run lint && npm run build-css && npm run build-react",
+        "build-react": "react-scripts build",
+        "build-css": "node-sass-chokidar src/ -o src/",
+        "watch-react": "node -r dotenv/config ./node_modules/.bin/react-scripts start dotenv_config_path=.env.local",
+        "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+        "test": "react-scripts test --env=jsdom",
+        "lint": "eslint src/.",
+        "eject": "react-scripts eject"
+    },
+    "devDependencies": {
+        "node-sass-chokidar": "0.0.3",
+        "babel-eslint": "^7.2.3",
+        "concurrently": "^3.5.1",
+        "dotenv": "^4.0.0",
+        "eslint": "^4.12.0",
+        "eslint-config-react-app": "^2.0.1",
+        "eslint-plugin-flowtype": "^2.39.1",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-jsx-a11y": "^5.1.1",
+        "eslint-plugin-react": "^7.5.1"
+    }
+}
